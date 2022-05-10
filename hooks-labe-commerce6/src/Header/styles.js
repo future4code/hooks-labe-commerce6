@@ -14,9 +14,8 @@ export const Container = styled.header`
     z-index:9999;
 
     img{
-        width:200px;
-        max-height:10vh;
-        min-width:200px;
+       height:10vh;
+        
         
     }
 `;
