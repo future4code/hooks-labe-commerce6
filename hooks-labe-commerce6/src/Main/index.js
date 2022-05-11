@@ -17,7 +17,7 @@ class Main extends React.Component {
                 link:'image9',
                 alt:"Camiseta Voyager 1977",
                 key: Date.now()*Math.random(),
-                contador:1,
+                units:1,
             },
             {
                 name:"Camiseta NASA Rosa",
@@ -25,7 +25,7 @@ class Main extends React.Component {
                 link:'image2',
                 alt:"Camiseta NASA Rosa",
                 key: Date.now()*Math.random(),
-                contador:1,
+                units:1,
             },
             {
                 name:"Camiseta Chookity POK",
@@ -33,7 +33,7 @@ class Main extends React.Component {
                 link:'image3',
                 alt:"Camiseta Chookity POK",
                 key: Date.now()*Math.random(),
-                contador:1,
+                units:1,
             },
             {
                 name:"Moleton NASA Preto",
@@ -41,7 +41,7 @@ class Main extends React.Component {
                 link:'image4',
                 alt:"Moleton NASA Preto",
                 key: Date.now()*Math.random(),
-                contador:1,
+                units:1,
             },
             {
                 name:"Moleton Homossexualien Cinza",
@@ -49,7 +49,7 @@ class Main extends React.Component {
                 link:'image5',
                 alt:"Moleton Homossexualien Cinza",
                 key: Date.now()*Math.random(),
-                contador:1,
+                units:1,
             },
             {
                 name:"Moleton Homossexualien Preto",
@@ -57,7 +57,7 @@ class Main extends React.Component {
                 link:'image6',
                 alt:"Moleton Homossexualien Preto",
                 key: Date.now()*Math.random(),
-                contador:1,
+                units:1,
             },
             {
                 name:"Moleton Perdido no Espaço",
@@ -65,7 +65,7 @@ class Main extends React.Component {
                 link:'image7',
                 alt:"Moleton Perdido no Espaço",
                 key: Date.now()*Math.random(),
-                contador:1,
+                units:1,
             },
             {
                 name:"Camiseta NASA Branca",
@@ -73,7 +73,7 @@ class Main extends React.Component {
                 link:'image10',
                 alt:"Camiseta NASA Branca",
                 key: Date.now()*Math.random(),
-                contador:1,
+                units:1,
             },
             {
                 name:"Camiseta feminina I NEED MORE SPACE",
@@ -81,7 +81,7 @@ class Main extends React.Component {
                 link:'image1',
                 alt:"Camiseta feminina I NEED MORE SPACE",
                 key: Date.now()*Math.random(),
-                contador:1,
+                units:1,
             },
 
 
@@ -90,86 +90,86 @@ class Main extends React.Component {
             
 
         ],//ARMAZENA ITENS DO CARRINHO
-        busca:'', //INPUT PARA PESQUISA
+        search:'', //INPUT PARA PESQUISA
         order:'pricecres', 
-        valorminimo:2,
-        valormaximo:1000,
+        minValue:2,
+        maxValue:1000,
        
     }
 
-    onChangeBusca = (event) =>{
-        this.setState({busca:event.target.value});
+    onChangeSearchInput = (event) =>{
+        this.setState({search:event.target.value});
     }//ATRIBUI VALOR DO INPUT PARA O STATE DE BUSCA
 
     onClickAdd = (key)=>{ 
-       const testagem = this.state.cart.find((produto)=>{
-           return produto.key === key
+       const checkCart = this.state.cart.find((product)=>{
+           return product.key === key
        })//VERIFICA SE A KEY DO ITEM QUE FOI SELECIONADO EXISTE DENTRO DO STATE CART. SE TIVER, TESTAGEM RECEBERÁ O VALOR DA KEY, SE NÃO, RECEBE FALSE.
-       if (testagem){ //SE TESTAGEM !== FALSE FAZ UM MAP DO CART. SE KEY JÁ EXISTIR NO CARRINHO, ADICIONA ++ NO CONTADOR.
-            this.state.cart.map((produto) => {
-                if (produto.key === key){
-                    produto.contador++
-                   let novoCart = this.state.cart.filter((produto)=>{
-                        return produto.key !== key
+       if (checkCart){ //SE TESTAGEM !== FALSE FAZ UM MAP DO CART. SE KEY JÁ EXISTIR NO CARRINHO, ADICIONA ++ NO CONTADOR.
+            this.state.cart.map((product) => {
+                if (product.key === key){
+                    product.units++
+                   let newCart = this.state.cart.filter((product)=>{
+                        return product.key !== key
                     })
-                    novoCart = [...novoCart,produto]
-                    this.setState({cart:novoCart})
-                    return produto
+                    newCart = [...newCart,product]
+                    this.setState({cart:newCart})
+                    return product
                 }else{
-                    return produto
+                    return product
                 }
             })
 
        }else{//SE KEY NÃO EXISTIR NO CART, ELE ADICIONA. CRIA UMA VARIAVEL QUE CONTEM SÓ O ITEM E DEPOIS ADICIONA ELE NO ESTADO.
-           let itemAdicionar = this.state.market.filter((produto)=>{
-               return produto.key === key
+           let itemAdd = this.state.market.filter((product)=>{
+               return product.key === key
            });
-           itemAdicionar = itemAdicionar[0]; 
-           const newCart = [...this.state.cart,itemAdicionar];
+           itemAdd = itemAdd[0]; 
+           const newCart = [...this.state.cart,itemAdd];
            this.setState({cart:newCart}); 
        }
     }
     
   render() {
-    const listaFiltrada = this.state.market.filter((produto)=>{ 
-        return produto.name.toUpperCase().includes(this.state.busca.toUpperCase())})//AQUI 
-    .filter((produto)=>{
-        return produto.price <= this.state.valormaximo && produto.price >= this.state.valorminimo})
+    const filtredList = this.state.market.filter((product)=>{ 
+        return product.name.toUpperCase().includes(this.state.search.toUpperCase())})//AQUI 
+    .filter((product)=>{
+        return product.price <= this.state.maxValue && product.price >= this.state.minValue})
     .sort((a,b)=>{
 
-        if (this.state.order === 'namecres'){
+        if (this.state.order === 'nameAZ'){
             if(a.name < b.name){return -1}else{return 1};}
 
-        if(this.state.order === 'namedesc'){
+        if(this.state.order === 'nameZA'){
             if(a.name > b.name){return -1}else{return 1};} 
 
-        if(this.state.order === 'pricecres'){
+        if(this.state.order === 'priceAZ'){
             if(a.price < b.price){return -1}else{return 1}} 
 
-        if(this.state.order === 'pricedes'){
+        if(this.state.order === 'priceZA'){
             if(a.price < b.price){return -1}else{return 1}} 
 
         else{return true}
         })  
     
 
-    const listMarket = listaFiltrada.map((produto)=>{
+    const listMarket = filtredList.map((product)=>{
         return(
-            <Card name={produto.name} 
-            price={`R$ ${produto.price},99`} 
-            link={produto.link} alt={produto.alt} 
-            key={produto.key} 
-            onClick={()=>this.onClickAdd(produto.key)}/>
+            <Card name={product.name} 
+            price={`R$ ${product.price},99`} 
+            link={product.link} alt={product.alt} 
+            key={product.key} 
+            onClick={()=>this.onClickAdd(product.key)}/>
         )
     })
     
-    const listCart = this.state.cart.map((produto)=>{
+    const listCart = this.state.cart.map((product)=>{
         return(
-            <Card name={produto.contador} 
-            price={`R$ ${produto.price},99`} 
-            link={produto.link} alt={produto.alt} 
-            key={produto.key} 
-            onClick={()=>this.onClickAdd(produto.key)}/>
+            <Card name={product.contador} 
+            price={`R$ ${product.price},99`} 
+            link={product.link} alt={product.alt} 
+            key={product.key} 
+            onClick={()=>this.onClickAdd(product.key)}/>
             
         )
     })
@@ -177,7 +177,7 @@ class Main extends React.Component {
     return (
       <Container>
         <FilterBox>
-            <input type="text" value={this.state.busca} onChange={this.onChangeBusca}/>
+            <input type="text" value={this.state.search} onChange={this.onChangeSearchInput}/>
             
         </FilterBox>
         <List>
