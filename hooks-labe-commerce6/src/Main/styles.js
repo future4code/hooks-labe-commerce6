@@ -20,7 +20,7 @@ export const FilterBox = styled.div`
 `;
 
 export const List = styled.div`
-    width:80%;
+    width:85%;
     display:Flex;
     flex-direction:row;
     justify-content:center;

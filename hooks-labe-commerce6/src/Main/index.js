@@ -10,7 +10,7 @@ import { Container, FilterBox, List } from "./styles";
 class Main extends React.Component {
 
     state={
-        market:[
+        store:[
             {
                 name:"Camiseta Voyager 1977",
                 price: 99,
@@ -89,8 +89,8 @@ class Main extends React.Component {
         cart:[
             
 
-        ],//ARMAZENA ITENS DO CARRINHO
-        search:'', //INPUT PARA PESQUISA
+        ],
+        search:'', 
         order:'pricecres', 
         minValue:2,
         maxValue:1000,
@@ -99,13 +99,13 @@ class Main extends React.Component {
 
     onChangeSearchInput = (event) =>{
         this.setState({search:event.target.value});
-    }//ATRIBUI VALOR DO INPUT PARA O STATE DE BUSCA
+    }
 
     onClickAdd = (key)=>{ 
        const checkCart = this.state.cart.find((product)=>{
            return product.key === key
-       })//VERIFICA SE A KEY DO ITEM QUE FOI SELECIONADO EXISTE DENTRO DO STATE CART. SE TIVER, TESTAGEM RECEBERÁ O VALOR DA KEY, SE NÃO, RECEBE FALSE.
-       if (checkCart){ //SE TESTAGEM !== FALSE FAZ UM MAP DO CART. SE KEY JÁ EXISTIR NO CARRINHO, ADICIONA ++ NO CONTADOR.
+       })
+       if (checkCart){ 
             this.state.cart.map((product) => {
                 if (product.key === key){
                     product.units++
@@ -120,7 +120,7 @@ class Main extends React.Component {
                 }
             })
 
-       }else{//SE KEY NÃO EXISTIR NO CART, ELE ADICIONA. CRIA UMA VARIAVEL QUE CONTEM SÓ O ITEM E DEPOIS ADICIONA ELE NO ESTADO.
+       }else{
            let itemAdd = this.state.market.filter((product)=>{
                return product.key === key
            });
@@ -131,8 +131,9 @@ class Main extends React.Component {
     }
     
   render() {
-    const filtredList = this.state.market.filter((product)=>{ 
-        return product.name.toUpperCase().includes(this.state.search.toUpperCase())})//AQUI 
+
+    const filtredList = this.state.store.filter((product)=>{ 
+        return product.name.toUpperCase().includes(this.state.search.toUpperCase())})
     .filter((product)=>{
         return product.price <= this.state.maxValue && product.price >= this.state.minValue})
     .sort((a,b)=>{
@@ -153,7 +154,7 @@ class Main extends React.Component {
         })  
     
 
-    const listMarket = filtredList.map((product)=>{
+    const listStore = filtredList.map((product)=>{
         return(
             <Card name={product.name} 
             price={`R$ ${product.price},99`} 
@@ -163,31 +164,26 @@ class Main extends React.Component {
         )
     })
     
-    const listCart = this.state.cart.map((product)=>{
-        return(
-            <Card name={product.contador} 
-            price={`R$ ${product.price},99`} 
-            link={product.link} alt={product.alt} 
-            key={product.key} 
-            onClick={()=>this.onClickAdd(product.key)}/>
+    // const listCart = this.state.cart.map((product)=>{
+    //     return(
+    //         <Card name={product.contador} 
+    //         price={`R$ ${product.price},99`} 
+    //         link={product.link} alt={product.alt} 
+    //         key={product.key} 
+    //         onClick={()=>this.onClickAdd(product.key)}/>
             
-        )
-    })
+    //     )
+    // })
     
     return (
       <Container>
         <FilterBox>
-            <input type="text" value={this.state.search} onChange={this.onChangeSearchInput}/>
-            
+            <input type="text" value={this.state.search} onChange={this.onChangeSearchInput}/>     
         </FilterBox>
         <List>
-            {listMarket}
+            {listStore}
         </List>
         <br/>
-        <List>
-            <h1>Aqui embaixo é o carrinho. </h1>
-            {listCart}
-        </List>
       </Container>
     );
   }

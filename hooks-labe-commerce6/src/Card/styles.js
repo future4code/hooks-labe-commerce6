@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
-    width: 250px;
+    width: 320px;
     height: 450px;
     display:flex;
     flex-direction:column;
@@ -9,6 +10,8 @@ export const Container = styled.div`
     align-items:center;
     padding:5px;
     gap:5px;
+    border-radius:20px;
+    background-color:rgb(211,188,252,.5);
 
 `;
 
@@ -24,20 +27,21 @@ export const Product = styled.div`
     
     
     img{
-        width:100%;
+        width:90%;
         margin-bottom:25px;
     }
     p{
         letter-spacing:1px;
         color:rgb(0,0,0,.6);
-        margin-bottom:20px
+        margin-bottom:20px;
+        color:white;
     }
     span{
         text-align:center;
-        color:black;
+        color:white;
         font-weight:bold;
         font-size:1.2rem;
-        margin-bottom:20px;
+        margin-bottom:10px;
     }
     button{
         height:40px;
@@ -52,6 +56,7 @@ export const Product = styled.div`
         gap:15px;
         background-color:rgb(0,0,0,.2);
         padding: 0 10px;
+        color:white;
 
         &:hover{
         background-color: rgb(0,255,0,.3);
