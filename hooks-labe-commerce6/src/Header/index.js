@@ -1,13 +1,17 @@
 import React from "react";
 import { Container } from "./styles";
 import logo from '../img/logo.png';
-import logo2 from '../img/logo2.png'
-const Header = () =>{
-    return (
-    <Container>
-        <img src={logo} alt='space'/>
-        <img src={logo2} alt='space'/>
-    </Container>
-)}
+
+class Header extends React.Component{
+    refreshPage = () => {
+        window.location.reload(false);
+    }
+    render(){
+        return (
+        <Container value={this.props.value} onChange={this.props.onChange}>
+            <img src={logo} alt='Logo' onClick={this.refreshPage}/>
+            <input type="text" value={this.props.value} onChange={this.props.onChange} placeholder='Search'/>
+        </Container>
+)}}
 
 export default Header
