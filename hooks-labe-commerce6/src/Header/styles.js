@@ -15,9 +15,23 @@ export const Container = styled.header`
 
     img{
        height:10vh;
-       
+       margin-right:15vw;
        &:hover{
            cursor: pointer;
        }
     }
-`;
+    input{
+        width:25vw;
+        height:35px;
+        border:groove 1px rgb(0,0,0,.6);
+        background-color:rgb(0,0,0,.2);
+        border-radius:20px;
+        color:white;
+        font-size:16px;
+        padding-left:25px;
+        outline:0;
+        &::placeholder{
+            color:rgba(255,255,255,.6);
+        }
+    }
+`;  

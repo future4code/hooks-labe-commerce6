@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../Card";
-import { Container, FilterBox, List } from "./styles";
+import Header from "../Header";
+import { Container, List } from "./styles";
 
 
 
@@ -177,9 +178,7 @@ class Main extends React.Component {
     
     return (
       <Container>
-        <FilterBox>
-            <input type="text" value={this.state.search} onChange={this.onChangeSearchInput}/>     
-        </FilterBox>
+        <Header value={this.state.search} onChange={this.onChangeSearchInput} /> 
         <List>
             {listStore}
         </List>
