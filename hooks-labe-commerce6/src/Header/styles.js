@@ -34,4 +34,18 @@ export const Container = styled.header`
             color:rgba(255,255,255,.6);
         }
     }
+    svg{
+        transform:scale(2);
+        position:relative;
+        left:15vw;
+        color:white;
+        cursor:pointer;    
+
+        &:hover{
+            color:rgb(102,50,153);
+        }
+        &:active{
+            transform:scale(2.2);
+        }
+    }
 `;  

@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "../Card";
+import CardCarrinho from "../CardCarrinho";
 import Header from "../Header";
-import { Container, List } from "./styles";
+import { Container, List, ProductsCart } from "./styles";
 
 
 
@@ -91,6 +92,15 @@ class Main extends React.Component {
             
 
         ],
+        teste:{
+            name:"Camiseta feminina I NEED MORE SPACE",
+            price: 129,
+            link:'image1',
+            alt:"Camiseta feminina I NEED MORE SPACE",
+            key: Date.now()*Math.random(),
+            units:1,
+        },
+        cartVisibility:false,
         search:'', 
         order:'pricecres', 
         minValue:2,
@@ -122,7 +132,7 @@ class Main extends React.Component {
             })
 
        }else{
-           let itemAdd = this.state.market.filter((product)=>{
+           let itemAdd = this.state.store.filter((product)=>{
                return product.key === key
            });
            itemAdd = itemAdd[0]; 
@@ -130,7 +140,9 @@ class Main extends React.Component {
            this.setState({cart:newCart}); 
        }
     }
-    
+    toggleVisibilityCart = () =>{
+        this.setState({cartVisibility:!this.state.cartVisibility})
+    }
   render() {
 
     const filtredList = this.state.store.filter((product)=>{ 
@@ -165,20 +177,24 @@ class Main extends React.Component {
         )
     })
     
-    // const listCart = this.state.cart.map((product)=>{
-    //     return(
-    //         <Card name={product.contador} 
-    //         price={`R$ ${product.price},99`} 
-    //         link={product.link} alt={product.alt} 
-    //         key={product.key} 
-    //         onClick={()=>this.onClickAdd(product.key)}/>
-            
-    //     )
-    // })
+    const listCart = this.state.cart.map((product)=>{
+        return(
+            <CardCarrinho 
+            name={product.name} 
+            price={`R$ ${product.price},99`} 
+            units={product.units}
+            key={product.key} 
+            />
+           
+        )
+    })
     
     return (
       <Container>
-        <Header value={this.state.search} onChange={this.onChangeSearchInput} /> 
+        <Header value={this.state.search} onChange={this.onChangeSearchInput} onClickCart={this.toggleVisibilityCart}/> 
+        <ProductsCart visibility={this.state.cartVisibility}>
+        {listCart}
+        </ProductsCart>
         <List>
             {listStore}
         </List>
