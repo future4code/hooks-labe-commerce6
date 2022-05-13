@@ -2,7 +2,8 @@ import React from "react";
 import Card from "../Card";
 import CardCarrinho from "../CardCarrinho";
 import Header from "../Header";
-import { Container, List, ProductsCart } from "./styles";
+import { Container, List, ProductsCart, Filter } from "./styles";
+import {FaSortAlphaDownAlt,FaSortAlphaDown,FaSortAmountDownAlt,FaSortAmountDown} from 'react-icons/fa';
 
 
 
@@ -92,22 +93,18 @@ class Main extends React.Component {
             
 
         ],
-        teste:{
-            name:"Camiseta feminina I NEED MORE SPACE",
-            price: 129,
-            link:'image1',
-            alt:"Camiseta feminina I NEED MORE SPACE",
-            key: Date.now()*Math.random(),
-            units:1,
-        },
+        
         cartVisibility:false,
         search:'', 
-        order:'pricecres', 
+        order:'nameAZ', 
         minValue:2,
         maxValue:1000,
        
     }
-
+orderAZ =   ()=>{this.setState({order:"nameAZ"})};
+orderZA =   ()=>{this.setState({order:"nameZA"})};
+orderDown = ()=>{this.setState({order:"priceDown"})};
+orderUp =   ()=>{this.setState({order:"priceUp"})};   
     onChangeSearchInput = (event) =>{
         this.setState({search:event.target.value});
     }
@@ -157,10 +154,10 @@ class Main extends React.Component {
         if(this.state.order === 'nameZA'){
             if(a.name > b.name){return -1}else{return 1};} 
 
-        if(this.state.order === 'priceAZ'){
-            if(a.price < b.price){return -1}else{return 1}} 
+        if(this.state.order === 'priceDown'){
+            if(a.price > b.price){return -1}else{return 1}} 
 
-        if(this.state.order === 'priceZA'){
+        if(this.state.order === 'priceUp'){
             if(a.price < b.price){return -1}else{return 1}} 
 
         else{return true}
@@ -192,6 +189,27 @@ class Main extends React.Component {
     return (
       <Container>
         <Header value={this.state.search} onChange={this.onChangeSearchInput} onClickCart={this.toggleVisibilityCart}/> 
+        <Filter>
+            <h3>ORDENAR:</h3>
+            <div>
+                <div onClick={this.orderAZ}>
+                    <p>NOME:</p>
+                    <FaSortAlphaDown/>
+                </div>
+                <div  onClick={this.orderZA}>
+                    <p>NOME:</p>
+                    <FaSortAlphaDownAlt/>
+                </div>
+                <div  onClick={this.orderDown}>
+                    <p>PREÇO:</p>
+                    <FaSortAmountDown/>
+                </div>
+                <div  onClick={this.orderUp}>
+                    <p>PREÇO:</p>
+                    <FaSortAmountDownAlt/>
+                </div>
+            </div>
+        </Filter>
         <ProductsCart visibility={this.state.cartVisibility}>
         {listCart}
         </ProductsCart>
