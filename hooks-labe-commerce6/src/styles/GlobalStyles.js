@@ -1,6 +1,8 @@
-import {createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); // importo a fonte aqui e o font-family lá em baixo dentro do root
+
 *{    
     padding:0;
     margin:0;
@@ -20,5 +22,7 @@ html, body, #root{
         width:0;
         height:0;
     }
+
+    font-family: 'Bebas Neue', cursive;
 }
-`
+`;
