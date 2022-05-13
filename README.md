@@ -63,7 +63,7 @@ http://
 
 
 * [**Felipe Oliveira**](https://github.com/ElreversoMain)
-* [**Gaabriel Antunes**](https://github.com/antilt-dev)
+* [**Gabriel Antunes**](https://github.com/antilt-dev)
 * [**Paulo Junior**](https://github.com/PauloJunior10)
 
 
