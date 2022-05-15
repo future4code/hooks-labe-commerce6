@@ -9,10 +9,13 @@ class Header extends React.Component{
     }
     render(){
         return (
-        <Container value={this.props.value} onChange={this.props.onChange} onClickCart={this.props.onClick}>
+        <Container value={this.props.value} onChange={this.props.onChange} valueCart={this.props.valueCart} >
             <img src={logo} alt='Logo' onClick={this.refreshPage}/>
             <input type="text" value={this.props.value} onChange={this.props.onChange} placeholder='Search'/>
-            <CgShoppingCart onClick={this.props.onClickCart}/>
+            <div>
+                <CgShoppingCart onClick={this.props.onClickCart}/>
+                <p>R${this.props.valueCart()},00</p>
+            </div>
         </Container>
 )}}
 

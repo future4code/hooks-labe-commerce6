@@ -9,19 +9,26 @@ export const Container = styled.header`
     flex-direction:row;
     align-items:center;
     padding:10px 0;
-    padding-left:15vw;
+    padding-left:10vw;
     position:fixed;
     z-index:9999;
+    @media (max-width:700px){
+        padding-left:3vw;
+        }
 
     img{
        height:10vh;
-       margin-right:15vw;
+       margin-right:10vw;
        &:hover{
            cursor: pointer;
        }
+       @media (max-width:700px){
+           height:5vh;
+        margin-right:3vw;
+        }
     }
     input{
-        width:25vw;
+        width:35vw;
         height:35px;
         border:groove 1px rgb(0,0,0,.6);
         background-color:rgb(0,0,0,.2);
@@ -33,11 +40,21 @@ export const Container = styled.header`
         &::placeholder{
             color:rgba(255,255,255,.6);
         }
+        @media (max-width:700px){
+        width:25vw;
+        }
     }
-    svg{
+    div{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        gap:25px;
+        position:absolute;
+        right:10vw;
+
+        svg{
         transform:scale(2);
-        position:relative;
-        left:15vw;
         color:white;
         cursor:pointer;    
 
@@ -48,4 +65,17 @@ export const Container = styled.header`
             transform:scale(2.2);
         }
     }
+    p{
+        font-size:1.2rem;
+        padding: 2px 10px;
+        color:white;
+        background-color:rgba(0,255,0,.3);
+        border:none;
+        border-radius:10px;
+    }
+    @media (max-width:700px){
+        right:5vw;
+    }
+    }
+   
 `;  

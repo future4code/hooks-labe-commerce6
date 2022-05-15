@@ -8,7 +8,7 @@ class Card extends React.Component{
     render(){
         return(
             <Container>
-                <Product price={this.props.price} link={this.props.link} alt={this.props.alt}>
+                <Product>
                 <img src={require(`../img/${this.props.link}.png`)} alt={this.props.alt}/>
                     <p>{this.props.name}</p>
                     <span>{this.props.price}</span>

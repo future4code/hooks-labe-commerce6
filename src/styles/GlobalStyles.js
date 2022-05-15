@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap'); // importo a fonte aqui e o font-family lá em baixo dentro do root
+
 
 *{    
     padding:0;
@@ -23,6 +23,6 @@ html, body, #root{
         height:0;
     }
 
-    font-family: 'Righteous', cursive;
+    font-family: 'Open Sans', sans-serif;
 }
 `;
