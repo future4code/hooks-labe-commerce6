@@ -8,22 +8,22 @@ class Footer extends React.Component {
       <Container>
         <Bloco>
           <h3>Fale conosco</h3>
-          <a href="">
+          <a href="http://localhost:3000/">
             <p>Minha Conta</p>
           </a>
-          <a href="">
+          <a href="http://localhost:3000/">
             <p>Meus pedidos</p>
           </a>
-          <a href="">
+          <a href="http://localhost:3000/">
             <p>Encontre uma Loja perto de você</p>
           </a>
-          <a href="">
+          <a href="http://localhost:3000/">
             <p>Central de Atendimento</p>
           </a>
-          <a href="">
+          <a href="http://localhost:3000/">
             <p>Perguntas frequentes</p>
           </a>
-          <a href="">
+          <a href="http://localhost:3000/">
             <p>Institucional</p>
           </a>
         </Bloco>
@@ -40,16 +40,16 @@ class Footer extends React.Component {
         <Bloco>
           <h3>Redes Sociais</h3>
 
-          <a href="https://pt-br.facebook.com/" target="_blank">
+          <a href="https://pt-br.facebook.com/" target="_blank" rel="noreferrer">
             <p>Facebook</p>
           </a>
-          <a href="https://twitter.com/explore" target="_blank">
+          <a href="https://twitter.com/explore" target="_blank" rel="noreferrer">
             <p>Twitter</p>
           </a>
-          <a href="https://www.instagram.com/" target="_blank">
+          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
             <p>Instagram</p>
           </a>
-          <a href="https://www.youtube.com/" target="_blank">
+          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
             <p>Youtube</p>
           </a>
         </Bloco>

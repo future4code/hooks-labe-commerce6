@@ -16,25 +16,35 @@ export const List = styled.div`
     justify-content:center;
     flex-wrap:wrap;
     gap:30px;
-    margin-top:5vh;
+    margin-top:20vh;
 `;
 
 export const ProductsCart = styled.div`
-    width:30vw;
-    height:90vh;
-    border:solid black 1px;
+    width:20vw;
+    min-width:400px;
+    max-height:410px;
     display:flex;
-    flex-direction:column;
+    flex-direction:column-reverse;
     gap:3px;
     background-color:rgb(0,0,0,.9);
-    position: fixed;
-    top:10vh;
+    position:absolute;
+    top:17.5vh;
     right:0;
     z-index:999;
-    visibility:${(props)=>(props.visibility? "visibility":"hidden")};
+    visibility:${(props)=>(props.visibility === 'true'? "visibility":"hidden")};
+    
     @media (max-width:500px){
         width:100vw;
     }
+    overflow-y:scroll;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+
+    &::-webkit-scrollbar{
+        width:0;
+        height:0;
+    }
+    
 `;
 
 export const Filter = styled.div`
@@ -48,6 +58,19 @@ export const Filter = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    position:fixed;
+    z-index:9999;
+    @media (max-width:700px){
+        p{
+            display:none;
+        }
+        div{
+        input{
+            width:100px;
+            padding:0 5px;
+        }}
+    }
+    
    
     div{
         display:flex;
@@ -66,6 +89,20 @@ export const Filter = styled.div`
             &:active{
                 transform:scale(1.05);
             }
+        }
+    }
+    input{
+        width:150px;
+        height:20px;
+        border-radius:10px;
+        outline:none;
+        border: 0.5px solid black;
+        color:white;
+        padding:0 10px;
+        background-color:rgb(0,0,0,.2);
+
+        &::placeholder{
+            color:rgb(255,255,255,.6);
         }
     }
 `;

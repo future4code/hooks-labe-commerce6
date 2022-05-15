@@ -64,5 +64,3 @@ http://lab-space-store.surge.sh/
 * [**Felipe Oliveira**](https://github.com/ElreversoMain)
 * [**Gabriel Antunes**](https://github.com/antilt-dev)
 * [**Paulo Junior**](https://github.com/PauloJunior10)
-
-

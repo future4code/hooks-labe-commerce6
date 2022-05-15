@@ -35,6 +35,8 @@ export const Product = styled.div`
         color:rgb(0,0,0,.6);
         margin-bottom:20px;
         color:white;
+        text-align:center;
+        max-width:80%
     }
     span{
         text-align:center;
